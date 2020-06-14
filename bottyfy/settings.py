@@ -25,12 +25,15 @@ SECRET_KEY = ')!jzhs*wogk=wmx4k9ydc79pq4q0(sfdhd_(dt7_t+isk4_*@l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['bottyfy.nw.r.appspot.com']
+ALLOWED_HOSTS = ['bottyfy.nw.r.appspot.com', '127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'crispy_forms',
+    'users.apps.UsersConfig',
+    'ikariam.apps.IkariamConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -132,3 +135,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = 'static'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
