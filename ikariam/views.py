@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 posts = [
     {
-        'author': 'kwint0',
+        'author': 'Joe Doe',
         'title': 'Some Content',
         'content': 'First  content',
         'date_posted': 'July 14, 2020'
