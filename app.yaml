@@ -14,3 +14,5 @@ handlers:
   - url: /.*
     script: auto
 # [END django_app]
+resources:
+  memory_gb: 4
