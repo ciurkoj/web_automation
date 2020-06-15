@@ -72,9 +72,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'bottyfy.wsgi.application'
 
-
 # [START db_setup]
-'''
 if os.getenv('GAE_APPLICATION', None):
     # Running on production App Engine, so connect to Google Cloud SQL using
     # the unix socket at /cloudsql/<your-cloudsql-connection string>
@@ -84,18 +82,26 @@ if os.getenv('GAE_APPLICATION', None):
             'HOST': '/cloudsql/bottyfy:europe-west2:bottyfy',
             'USER': 'bottyfy_admin',
             'PASSWORD': 'bottyfy',
-            'NAME': 'bottyfy_database',
+            'NAME': 'bottyfy',
         }
     }
 else:
-    '''
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # Running locally so connect to either a local MySQL instance or connect
+    # to Cloud SQL via the proxy.  To start the proxy via command line:
+    #    $ cloud_sql_proxy -instances=[INSTANCE_CONNECTION_NAME]=tcp:3306
+    # See https://cloud.google.com/sql/docs/mysql-connect-proxy
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': '127.0.0.1',
+            'USER': 'bottyfy',
+            'PASSWORD': 'bottyfy',
+            'NAME': 'bottyfy',
+        }
     }
-}
 # [END db_setup]
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
